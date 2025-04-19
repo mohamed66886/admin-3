@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPA Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-dashboard">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="2 (1).png" alt="Logo" width="40" class="me-2">
+                <span>Dashboard</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="bi bi-speedometer2 me-1"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="contentDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-layers me-1"></i> Content
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li id="HomePageButton">
+                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editHomeModal">
+                                    Homepage
+                                </a>
+                            </li>
+                            <li id="AboutPageButton">
+                                <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#aboutEditModal">
+                                    About Page
+                                </a>
+                            </li> 
+                            <li id="FooterButton">
+                                <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#FooterEditModal">
+                                Footer
+                            </a>    
+                            </li>   
+                            <li id="EventsButton">
+                                <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#eventManagementModal">
+                                    Events
+                                </a>  
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" id="CoursesButton">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#coursesModal">
+                            <i class="bi bi-book me-1"></i> Courses
+                        </a>
+                    </li>
+                    <li class="nav-item" id="traineesButton">
+                        <a href="#" id="StudentsButton" class="nav-link" data-bs-toggle="modal" data-bs-target="#studentModal">
+                            <i class="bi bi-people me-2"></i>  Students
+                        </a>
+                    </li>
+                    <li class="nav-item" id="PartnersButton">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#partnersModal">
+                            <i class="bi bi-building me-1"></i> Partners
+                        </a>
+                    </li>
+                    <li class="nav-item" id="InstructorButton">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#instructorModal">
+                            <i class="bi bi-chat-square-quote me-1"></i> Instructor
+                        </a>
+                    </li>
+                    <li class="nav-item" id="AccreditationButton">
+                        <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#accreditationModal">
+                            <i class="bi bi-award me-2"></i> Accreditation
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown" id="MoreButton">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-three-dots-vertical me-1"></i> More
+                        </a>
+                        <ul class="dropdown-menu" >
+                            <li id="MessagesButton">
+                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#messagesModal">
+                                    <i class="bi bi-chat-dots me-2"></i> Messages
+                                </a>
+                            </li>
+                            <li id="TeamButton">
+                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#TeamModal">
+                                    <i class="bi bi-people me-2"></i> Team
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <div class="d-flex">
+                    <div class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle me-1"></i> Admin
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i> Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="login.html"><i class="bi bi-box-arrow-left me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-2 d-none d-lg-block sidebar">
+                <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item list-group-item-action active">
+                        <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                    </a>
+                    <a href="#" id="HomePageButton1" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#editHomeModal">
+                        <i class="bi bi-house me-2" ></i> Homepage
+                    </a>
+                    <a href="#" id="AboutPageButton1" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#aboutEditModal">
+                        <i class="bi bi-info-circle me-2"></i> About Page
+                    </a> 
+                    <a href="#" id="FooterButton1" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#FooterEditModal">
+                        <i class="bi bi-info-circle me-2"></i>Footer
+                    </a>                     
+                    <a href="#" id="EventsButton1" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#eventManagementModal">
+                        <i class="bi bi-calendar-event me-2"></i> Events
+                    </a>
+                    <a href="#" id="CoursesButton1" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#coursesModal">
+                        <i class="bi bi-book me-2"></i> Courses
+                    </a>
+                    <a href="#" id="StudentsButton1" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#studentModal">
+                        <i class="bi bi-people me-2"></i>  Students
+                    </a>
+                    <a href="#" id="PartnersButton1" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#partnersModal">
+                        <i class="bi bi-building me-2"></i> Partners
+                    </a>
+                    <a href="#" id="InstructorButton1" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#instructorModal">
+                        <i class="bi bi-chat-square-quote me-2"></i> Instructor
+                    </a>
+                    <a href="#" id="AccreditationButton1" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#accreditationModal">
+                        <i class="bi bi-award me-2"></i> Accreditation
+                    </a>
+										<a class="list-group-item list-group-item-action" id="MessagesButton1" href="#" data-bs-toggle="modal" data-bs-target="#messagesModal">
+												<i class="bi bi-chat-dots me-2"></i> Messages
+										</a>
+										<a class="list-group-item list-group-item-action" id="TeamButton1" href="#" data-bs-toggle="modal" data-bs-target="#TeamModal">
+												<i class="bi bi-people me-2"></i> Team
+										</a>
+
+                </div>
+            </div>
+            
+            <!-- Main Content Area -->
+            <div class="col-lg-10 main-content">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h2 class="mb-0"><i class="bi bi-speedometer2 me-2"></i> Dashboard</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item active" aria-current="page">Home</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <!-- Quick Stats -->
+                <div class="row mb-4">
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <div class="card stat-card bg-primary text-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Courses</h6>
+                                        <h3 class="mb-0" id="coursesCount">0</h3>
+                                    </div>
+                                    <i class="bi bi-book fs-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <div class="card stat-card bg-success text-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Trainers</h6>
+                                        <h3 class="mb-0" id="trainersCount">0</h3>
+                                    </div>
+                                    <i class="bi bi-people fs-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <div class="card stat-card bg-warning text-dark">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Students</h6>
+                                        <h3 class="mb-0" id="studentsCount">0</h3>
+                                    </div>
+                                    <i class="bi bi-person-video fs-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <div class="card stat-card bg-info text-white">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Events</h6>
+                                        <h3 class="mb-0" id="eventsCount">0</h3>
+                                    </div>
+                                    <i class="bi bi-calendar-event fs-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity -->
+                <div class="row">
+                    <!-- Recent Updates -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0"><i class="bi bi-clock-history me-2"></i> Recent Updates</h5>
+                            </div>
+                            <div class="card-body d-flex flex-column">
+                                <div class="list-group list-group-flush flex-grow-1 overflow-auto" id="recentUpdates" style="max-height: 300px;"></div>
+                                <div class="mt-3 text-center">
+                                    <button id="loadMoreBtn" class="btn btn-outline-primary btn-sm">Load More</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Site Activity -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0"><i class="bi bi-activity me-2"></i> Site Activity</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="siteActivityChart" height="200"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+		<!-- Home Page Management Modal -->
+    <div class="modal fade" id="editHomeModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Edit Homepage</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs" id="homeTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="hero-tab" data-bs-toggle="tab" data-bs-target="#hero" type="button">Hero Section</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="courses-tab" data-bs-toggle="tab" data-bs-target="#courses" type="button">Course Categories</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="stats-tab" data-bs-toggle="tab" data-bs-target="#stats" type="button">Statistics</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="com-tab" data-bs-toggle="modal" data-bs-target="#homePageCommentsModal" type="button">Comments</button>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content p-3 border border-top-0" id="homeTabsContent">
+                        <div class="tab-pane fade show active" id="hero" role="tabpanel">
+                            <form id="editHeroForm">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="heroVideo" class="form-label">Background Video</label>
+                                        <input type="file" class="form-control" id="heroVideo" accept="video/*">
+                                        <small class="text-muted">Should be high quality and Less than 100MB</small>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="heroLogo" class="form-label">Site Logo</label>
+                                        <input type="file" class="form-control" id="heroLogo" accept="image/*">
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="heroTitle" class="form-label">Main Title</label>
+                                    <input type="text" class="form-control" id="heroTitle" value="">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="heroSubtitle" class="form-label">Subtitle</label>
+                                    <input type="text" class="form-control" id="heroSubtitle" value="">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="heroButtonText" class="form-label">Button Text</label>
+                                    <input type="text" class="form-control" id="heroButtonText" value="">
+                                </div>
+                                
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="courses" role="tabpanel">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <button class="btn btn-sm btn-success" id="updateCourseCategory" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+                                    <i class="bi bi-plus"></i> Add New Category
+                                </button>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="courseCategoriesTable">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Image</th>
+                                            <th>Category Name</th>
+                                            <th>Description</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="stats" role="tabpanel">
+                            <form id="editStatsForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="studentsStat" class="form-label">Students Count</label>
+                                        <input type="number" class="form-control" id="studentsStat" value="1000">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="instructorsStat" class="form-label">Instructors Count</label>
+                                        <input type="number" class="form-control" id="instructorsStat" value="100">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="hoursStat" class="form-label">Hours Count</label>
+                                        <input type="number" class="form-control" id="hoursStat" value="100000">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="ratingStat" class="form-label">Rating</label>
+                                        <input type="number" step="0.1" class="form-control" id="ratingStat" value="3.5">
+                                    </div>
+                                </div>
+                                
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+		<!-- HomePage Comment Management Modal -->
+		<div class="modal fade" id="addHomePageComment" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+					<form id="addHomePageCommentForm" class="modal-content">
+					<div class="modal-header bg-primary text-white">
+							<h5 class="modal-title" id="addModalLabel">Add Comment</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+							<input type="hidden" id="editIndex" value="-1">
+							<div class="mb-3">
+							<label class="form-label">Image URL</label>
+							<input type="file" id="imgInput" class="form-control" required accept="image/*">
+							</div>
+							<div class="mb-3">
+							<label class="form-label">Name</label>
+							<input type="text" id="nameInput" class="form-control" required>
+							</div>
+							<div class="mb-3">
+							<label class="form-label">Rating</label>
+							<input type="number" id="starsInput" class="form-control" min="1" max="5" required>
+							</div>
+							<div class="mb-3">
+							<label class="form-label">Job Title</label>
+							<input type="text" id="jobInput" class="form-control" required>
+							</div>
+							<div class="mb-3">
+							<label class="form-label">Comment</label>
+							<textarea id="commentInput" class="form-control" rows="3" required></textarea>
+							</div>
+					</div>
+					<div class="modal-footer">
+							<button type="submit" class="btn btn-primary">Save</button>
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+					</div>
+					</form>
+			</div>
+		</div>
+
+    <div class="modal fade" id="homePageCommentsModal" tabindex="-1" aria-labelledby="homePageCommentsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title" id="homePageCommentsModalLabel">Comments Table</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <button class="btn btn-success mb-3" onclick="openAddModal()">Add Comment</button>
+                <div class="table-responsive">
+                <table class="table table-bordered text-center align-middle" id="homePageCommentsTable">
+                <thead class="table-light">
+                    <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Stars</th>
+                    <th>Job Title</th>
+                    <th>Comment</th>
+                    <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="homePageCommentsTableBody">
+                </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+		<!-- Category Management Modal -->
+    <div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+					<div class="modal-content">
+							<div class="modal-header">
+									<h5 class="modal-title" id="addCategoryModalLabel">Add New Category</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+									<form id="addCategoryForm">
+											<div class="mb-3">
+													<label for="categoryImage" class="form-label">Category Image</label>
+													<input type="file" class="form-control" id="categoryImage" accept="image/*" required>
+											</div>
+											<div class="mb-3">
+													<label for="categoryName" class="form-label">Category Name</label>
+													<input type="text" class="form-control" id="categoryName" required>
+											</div>
+											<div class="mb-3">
+													<label for="DescriptionOfCourses" class="form-label">Description</label>
+													<input type="text" class="form-control" id="DescriptionOfCourses" value="" required>
+											</div>
+											<button type="submit" class="btn btn-success">Add Category</button>
+									</form>
+							</div>
+					</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="EditCategoryModal" tabindex="-1" aria-labelledby="EditCategoryModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+						<div class="modal-content">
+								<div class="modal-header">
+										<h5 class="modal-title" id="EditCategoryModalLabel">Edit Category</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+										<form id="EditCategoryForm">
+												<div class="mb-3">
+														<label for="EditcategoryImage" class="form-label">Category Image</label>
+														<input type="file" class="form-control" id="EditCategoryImage" accept="image/*" >
+												</div>
+												<div class="mb-3">
+														<label for="EditCategoryName" class="form-label">Category Name</label>
+														<input type="text" class="form-control" id="EditCategoryName" required>
+												</div>
+												<div class="mb-3">
+														<label for="EditDescriptionOfCourses" class="form-label">Description</label>
+														<input type="text" class="form-control" id="EditDescriptionOfCourses" value="" required>
+												</div>
+												<button type="submit" class="btn btn-success">Edit Category</button>
+										</form>
+								</div>
+						</div>
+				</div>
+		</div>
+
+
+    <!-- Courses Management Modal -->
+    <div class="modal fade" id="coursesModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Courses Management</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <button class="btn btn-sm btn-success" id="addCourseBtn" data-bs-toggle="modal" data-bs-target="#addCourseModal">
+                            <i class="bi bi-plus-lg me-1"></i> Add New Course
+                        </button>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="coursesTable">
+                            <thead>
+                                <tr>
+                                  <th>#</th>
+                                  <th>Image</th>
+                                  <th>Name</th>
+                                  <th>Category</th>
+                                  <th>Duration</th>
+                                  <th>comment</th>
+                                  <th>Actions</th>
+                                </tr>
+                              </thead>
+                            <tbody>
+                              
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addCourseModal" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+					<div class="modal-header bg-primary text-white">
+					<h5 class="modal-title">Add New Course</h5>
+					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+					<form id="addCourseForm">
+							<div class="row">
+							<div class="col-md-6 mb-3">
+									<label class="form-label" >Course Name</label>
+									<input type="text" class="form-control" id="addCourseName" required>
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">Category</label>
+									<select class="form-select" id="addCourseCategory1" required>
+									<option value="" selected disabled >Select Category</option>
+									</select>
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">Course Image</label>
+									<input type="file" class="form-control" id="addCourseImage" accept="image/*">
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">Duration (Hours)</label>
+									<input type="number" class="form-control" id="addCourseDuration" required>
+							</div>
+							<div class="col-12 mb-3">
+									<label class="form-label">Short Description</label>
+									<textarea class="form-control" id="addCourseDescription" rows="2" required></textarea>
+							</div>
+							<div class="col-12 mb-3">
+								<label class="form-label">Full Information</label>
+								<textarea class="form-control" id="addCourseFullInformation" rows="3" required></textarea>
+							</div>
+							<div class="col-md-6 mb-3">
+								<label class="form-label">Location</label>
+								<input type="text" class="form-control" id="addCourseLocation" rows="2" required>
+							</div>
+							<div class="col-md-6 mb-3">
+								<label class="form-label">Session Timing </label>
+								<input type="text"  class="form-control" id="addCourseSessionTiming" rows="2" required>
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">What Will Students Learn?</label>
+									<textarea class="form-control" id="addCourseWhatYouLearn" rows="1" required></textarea>
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">Rate (0 - 5)</label>
+									<input type="number" step="0.1" min="0" max="5" class="form-control" id="addCourseRate" required>
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">Original Price</label>
+									<input type="number" class="form-control" id="addCourseOriginalPrice" required>
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">Discounted Price</label>
+									<input type="number" class="form-control" id="addCourseDiscountedPrice" required>
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">Discount (%)</label>
+									<input type="number" class="form-control" id="addCourseDiscountPercent" required>
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">Start Date</label>
+									<input type="date" class="form-control" id="addCourseStartDate" required>
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">Number of Weeks</label>
+									<input type="number" class="form-control" id="addCourseWeeksCount" required>
+							</div>
+							<div class="col-md-6 mb-3">
+								<label class="form-label">Total Hours</label>
+								<input type="number" class="form-control" id="addCourseTotlaHours" required>
+							</div>
+							<div class="col-md-6 mb-3">
+								<label class="form-label"> Instructor</label>
+								<select class="form-select" id="addCourseInstructor" required>
+										<option value="" selected disabled >Select Instructor</option>
+								</select>
+							</div>
+							</div>
+	
+							<div class="text-end">
+							<button type="submit" class="btn btn-primary">Save Course</button>
+							</div>
+					</form>
+					</div>
+			</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="updateCourseModal" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+					<div class="modal-header bg-primary text-white">
+					<h5 class="modal-title">Update Course</h5>
+					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+					<form id="updateCourseForm">
+							<div class="row">
+							<div class="col-md-6 mb-3">
+									<label class="form-label" >Course Name</label>
+									<input type="text" class="form-control" id="updateCourseName" required>
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">Category</label>
+									<select class="form-select" id="updateCourseCategory1" required>
+									<option value="" selected disabled >Select Category</option>
+									</select>
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">Course Image</label>
+									<input type="file" class="form-control" id="updateCourseImage" accept="image/*">
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">Duration (Hours)</label>
+									<input type="number" class="form-control" id="updateCourseDuration" required>
+							</div>
+							<div class="col-12 mb-3">
+									<label class="form-label">Short Description</label>
+									<textarea class="form-control" id="updateCourseDescription" rows="2" required></textarea>
+							</div>
+							<div class="col-12 mb-3">
+								<label class="form-label">Full Information</label>
+								<textarea class="form-control" id="updateCourseFullInformation" rows="3" required></textarea>
+							</div>
+							<div class="col-md-6 mb-3">
+								<label class="form-label">Location</label>
+								<input type="text" class="form-control" id="updateCourseLocation" rows="2" required>
+							</div>
+							<div class="col-md-6 mb-3">
+								<label class="form-label">Session Timing </label>
+								<input type="text"  class="form-control" id="updateCourseSessionTiming" rows="2" required>
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">What Will Students Learn?</label>
+									<textarea class="form-control" id="updateCourseWhatYouLearn" rows="1" required></textarea>
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">Rate (0 - 5)</label>
+									<input type="number" step="0.1" min="0" max="5" class="form-control" id="updateCourseRate" required>
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">Original Price</label>
+									<input type="number" class="form-control" id="updateCourseOriginalPrice" required>
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">Discounted Price</label>
+									<input type="number" class="form-control" id="updateCourseDiscountedPrice" required>
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">Discount (%)</label>
+									<input type="number" class="form-control" id="updateCourseDiscountPercent" required>
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">Start Date</label>
+									<input type="date" class="form-control" id="updateCourseStartDate" required>
+							</div>
+							<div class="col-md-6 mb-3">
+									<label class="form-label">Number of Weeks</label>
+									<input type="number" class="form-control" id="updateCourseWeeksCount" required>
+							</div>
+							<div class="col-md-6 mb-3">
+								<label class="form-label"> Instructor</label>
+								<select class="form-select" id="updateCourseInstructor" required>
+										<option value="" selected disabled >Select Instructor</option>
+								</select>
+							</div>
+							</div>
+	
+							<div class="text-end">
+							<button type="submit" class="btn btn-primary">Save Course</button>
+							</div>
+					</form>
+					</div>
+			</div>
+			</div>
+		</div>
+
+    <!-- Course Comments Management Modal -->
+		<div class="modal fade" id="commentCorsModal" tabindex="-1" aria-labelledby="commentcorsModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+						<div class="modal-header">
+						<h5 class="modal-title" id="commentcorsModalLabel">Course Comments</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+						<button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addCommentModal" >Add Comment</button>
+						<div class="table-responsive">
+								<table class="table table-bordered table-hover text-center" id="commentCourseTable">
+								<thead class="table">
+										<tr>
+										<th>Image</th>
+										<th>Name</th>
+										<th>Job Title</th>
+										<th>Comment</th>
+										<th>Delete</th>
+										</tr>
+								</thead>
+								<tbody id="commentscTableBody">
+								</tbody>
+								</table>
+						</div>
+						</div>
+				</div>
+				</div>
+		</div>
+
+		<div class="modal fade" id="addCommentModal" tabindex="-1" aria-labelledby="addCommentModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+				<div class="modal-content">
+						<form id="addCommentForm">
+						<div class="modal-header">
+								<h5 class="modal-title" id="addCommentModalLabel">Add New Comment</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+								<label for="userImage">User Image:</label>
+								<input type="file" id="userImage" class="form-control mb-2" required>
+								<label for="userName">Name:</label>
+								<input type="text" id="userName" class="form-control mb-2" placeholder="Name" required>
+								<label for="userTitle">Job Title:</label>
+								<input type="text" id="userTitle" class="form-control mb-2" placeholder="Job Title" required>
+								<label for="ratingInput" class="form-label" >Rating</label>
+								<input type="number" id="ratingInput" class="form-control" min="1" max="5" required>
+								<label for="commentText"> Comment :</label>
+								<textarea id="commentText" class="form-control mb-2" placeholder="Comment" rows="3" required></textarea>
+						</div>
+						<div class="modal-footer">
+								<button type="submit" class="btn btn-success">Save</button>
+						</div>
+						</form>
+				</div>
+				</div>
+		</div>
+
+		<!-- Student Enrollment Management -->
+		<div class="modal fade" id="studentModal" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+					<div class="modal-header bg-primary text-white">
+						<h5 class="modal-title">Student Enrollment</h5>
+						<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+							<div class="d-flex align-items-center gap-2 flex-wrap">
+								<input type="text" class="form-control w-auto" id="studentSearch" placeholder="Search by name or email" onkeyup="filterStudents()">
+								
+								<select id="courseFilter" class="form-select w-auto" aria-label="Default select example" required onchange="filterStudents()">
+									<option value="all">All Courses</option>
+									<option value="Flutter">Flutter</option>
+									<option value="React">React</option>
+									<option value="Node.js">Node.js</option>
+									<option value="AI">AI</option>
+									<option value="Python">Python</option>
+									<option value="Java">Java</option>
+								</select>
+							</div>
+							<button type="button" class="btn btn-primary" id="unreadedBtn">
+								Only Unread
+							</button>
+						</div>
+					</div>
+					<div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+						<table class="table table-hover" id="studentsTable">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Name</th>
+									<th>Phone</th>
+									<th>Email</th>
+									<th>Courses</th>
+									<th>Enrollment Date</th>
+									<th>Read</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody id="studentsTbody">
+							</tbody>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button id="readAllBtn" class="btn btn-danger"><i class="bi bi-eye"></i> Read all</button>
+						<button id="downloadExcelBtn" class="btn btn-success">
+							<i class="bi bi-file-earmark-excel"></i> Download Excel
+						</button>
+						<button id="loadMoreBtn1" class="btn btn-outline-primary" onclick="loadMoreStudents()">Load More</button>
+					</div>
+				</div>
+			</div>
+		</div>                
+
+    <!-- Partners Management Modal -->
+    <div class="modal fade" id="partnersModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Partners Management</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-end mb-3">
+                        <button class="btn btn-success" id="addPartnerBtn" data-bs-toggle="modal" data-bs-target="#partnerFormModal">
+                            <i class="bi bi-plus-lg me-1"></i> Add New Partner
+                        </button>
+                        
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="partnersTable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Logo</th>
+                                    <th>Partner Name</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="partnerFormModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="partnerModalTitle">Add New Partner</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="partnerForm">
+                        <input type="hidden" id="partnerId">
+                        <div class="mb-3">
+                            <label for="partnerName" class="form-label">Partner Name</label>
+                            <input type="text" class="form-control" id="partnerName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="partnerLogo" class="form-label">Partner Logo</label>
+                            <input type="file" class="form-control" id="partnerLogo" accept="image/*">
+                            <small class="text-muted">Recommended dimensions: 300x150 pixels</small>
+                        </div>
+                        
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary">Save Partner</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instructor Management Modal -->
+    <div class="modal fade" id="instructorModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Instructor Management</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-end mb-3">
+                        <button class="btn btn-success" id="addinstructorBtn" data-bs-toggle="modal" data-bs-target="#addInstructorFormModal">
+                            <i class="bi bi-plus-lg me-1"></i> Add New Instructor
+                        </button>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="instructorsTable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>job title</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addInstructorFormModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="addInstructorModalTitle">Add New instructor</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addInstructorForm">
+                        <input type="hidden" id="addInstructorId">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="addInstructorName" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="addInstructorName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="addInstructorJobTitle" class="form-label">JobTitle</label>
+                                <input type="text" class="form-control" id="addInstructorJobTitle" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="addInstructorImage" class="form-label">Image</label>
+                                <input type="file" class="form-control" id="addInstructorImage" accept="image/*">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="addInstructorRating" class="form-label">Rating</label>
+                                <select class="form-select" id="addInstructorRating" required>
+                                    <option value="5">5 Stars</option>
+                                    <option value="4">4 Stars</option>
+                                    <option value="3">3 Stars</option>
+                                    <option value="2">2 Stars</option>
+                                    <option value="1">1 Star</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="addInstructorDescription" class="form-label">Description</label>
+                                <textarea class="form-control" id="addInstructorDescription" rows="3" required></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="addInstructorFacebook" class="form-label">Social Media (HTML Code)</label>
+                                <input type="text" class="form-control" id="addInstructorSocialMedia">
+                            </div>
+                        </div>
+                        <div class="text-end mt-4">
+                            <button type="submit" class="btn btn-primary">Save instructor</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+		<div class="modal fade" id="updateInstructorFormModal" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog modal-lg modal-dialog-scrollable">
+					<div class="modal-content">
+							<div class="modal-header bg-primary text-white">
+									<h5 class="modal-title" id="updateInstructorModalTitle">Add New instructor</h5>
+									<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+									<form id="updateInstructorForm">
+											<input type="hidden" id="updateInstructorId">
+											<div class="row g-3">
+													<div class="col-md-6">
+															<label for="updateInstructorName" class="form-label">Name</label>
+															<input type="text" class="form-control" id="updateInstructorName" required>
+													</div>
+													<div class="col-md-6">
+															<label for="updateInstructorJobTitle" class="form-label">JobTitle</label>
+															<input type="text" class="form-control" id="updateInstructorJobTitle" required>
+													</div>
+													<div class="col-md-6">
+															<label for="updateInstructorImage" class="form-label">Image</label>
+															<input type="file" class="form-control" id="updateInstructorImage" accept="image/*">
+													</div>
+													<div class="col-md-6">
+															<label for="updateInstructorRating" class="form-label">Rating</label>
+															<select class="form-select" id="updateInstructorRating" required>
+																	<option value="5">5 Stars</option>
+																	<option value="4">4 Stars</option>
+																	<option value="3">3 Stars</option>
+																	<option value="2">2 Stars</option>
+																	<option value="1">1 Star</option>
+															</select>
+													</div>
+													<div class="col-md-12">
+															<label for="updateInstructorDescription" class="form-label">Description</label>
+															<textarea class="form-control" id="updateInstructorDescription" rows="3" required></textarea>
+													</div>
+													<div class="col-md-12">
+															<label for="updateInstructorFacebook" class="form-label">Social Media (HTML Code)</label>
+															<input type="text" class="form-control" id="updateInstructorSocialMedia">
+													</div>
+											</div>
+											<div class="text-end mt-4">
+													<button type="submit" class="btn btn-primary">Save instructor</button>
+											</div>
+									</form>
+							</div>
+					</div>
+			</div>
+		</div>
+
+
+    <!-- Event Management Modal -->
+    <div class="modal fade" id="eventManagementModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Event Management</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+    
+            <div class="d-flex justify-content-end mb-3">
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#eventFormModal" id="addEventBtn">
+                <i class="bi bi-plus-lg me-1"></i> Add New Event
+                </button>
+            </div>
+    
+            <div class="table-responsive">
+                <table class="table table-hover" id="eventsTable">
+                <thead>
+                    <tr>
+                    <th>#</th>
+                    <th>Event Name</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                </table>
+            </div>
+    
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editEventFormModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="editEventModalTitle">Edit Event</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+            <form id="editEventForm">
+                <input type="hidden" id="editEventId">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="editEventName" class="form-label">Event Name</label>
+                        <input type="text" class="form-control" id="editEventName" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="editEventLocation" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="editEventLocation" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="editEventStartDate" class="form-label">Start Date</label>
+                        <input type="datetime-local" class="form-control" id="editEventStartDate" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="editEventEndDate" class="form-label">End Date</label>
+                        <input type="datetime-local" class="form-control" id="editEventEndDate" required>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="editEventImage" class="form-label">Event Image</label>
+                        <input type="file" class="form-control" id="editEventImage" accept="image/*">
+                        <small class="text-muted">Recommended size: 800x450 pixels</small>
+                        <div class="mt-2" id="editEventImagePreview"></div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="editEventDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="editEventDescription" rows="4" required></textarea>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="editEventStatus" class="form-label">Status</label>
+                        <select class="form-select" id="editEventStatus" required>
+                            <option value="Upcoming">Upcoming</option>
+                            <option value="Ongoing">Ongoing</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="editEventCapacity" class="form-label">Capacity</label>
+                        <input type="number" class="form-control" id="editEventCapacity">
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="editEventFeatured">
+                            <label class="form-check-label" for="editEventFeatured">
+                                Featured Event
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-end">
+                    <button type="button" class="btn btn-danger me-2" id="editEventdeleteEventBtn" style="display: none;">
+                        <i class="bi bi-trash"></i> Delete
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save"></i> Save Updates
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="modal fade" id="addEventFormModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="addEventModalTitle">Add New Event</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+            <form id="addEventForm">
+                <input type="hidden" id="addEventId">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="addEventName" class="form-label">Event Name</label>
+                        <input type="text" class="form-control" id="addEventName" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="addEventLocation" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="addEventLocation" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="addEventStartDate" class="form-label">Start Date</label>
+                        <input type="datetime-local" class="form-control" id="addEventStartDate" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="addEventEndDate" class="form-label">End Date</label>
+                        <input type="datetime-local" class="form-control" id="addEventEndDate" required>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="addEventImage" class="form-label">Event Image</label>
+                        <input type="file" class="form-control" id="addEventImage" accept="image/*">
+                        <small class="text-muted">Recommended size: 800x450 pixels</small>
+                        <div class="mt-2" id="addEventImagePreview"></div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="addEventDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="addEventDescription" rows="4" required></textarea>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="addEventStatus" class="form-label">Status</label>
+                        <select class="form-select" id="addEventStatus" required>
+                            <option value="Upcoming">Upcoming</option>
+                            <option value="Ongoing">Ongoing</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="addEventCapacity" class="form-label">Capacity</label>
+                        <input type="number" class="form-control" id="addEventCapacity">
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="addEventFeatured">
+                            <label class="form-check-label" for="addEventFeatured">
+                                Featured Event
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-end">
+                    <button type="button" class="btn btn-danger me-2" id="addEventdeleteEventBtn" style="display: none;">
+                        <i class="bi bi-trash"></i> Delete
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save"></i> Save Event
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+    <!-- Accreditation Management Modal -->
+    <div class="modal fade" id="accreditationModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Manage Accreditation</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <div class="d-flex justify-content-end mb-3">
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addAccreditationFormModal">
+                <i class="bi bi-plus-lg me-1"></i> Add New Accreditation
+                </button>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="accreditationTable">
+                <thead>
+                    <tr>
+										<th>Accreditation ID</th>
+										<th>Image</th>
+                    <th>Name</th>
+                    <th>date Acquired</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>1</td>
+                    <td>Accreditation 1</td>
+                    <td>Description 1</td>
+                    <td>2023</td>
+                    <td>Image 1</td>
+                    <td>Active</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary me-1" onclick="editAccreditation('accreditation1')">
+                        <i class="bi bi-pencil"></i> Edit
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteAccreditation('accreditation1')">
+                        <i class="bi bi-trash"></i> Delete
+                        </button>
+                    </td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addAccreditationFormModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Add Accreditation</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <form id="addAccreditationForm">
+                <input type="hidden" id="addAccreditationIndex">
+                <div class="row mb-3">
+									<div class="mb-6 col-md-6">
+										<label for="addAccreditationName" class="form-label">Accreditation Name</label>
+										<input type="text" class="form-control" id="addAccreditationName" required>
+										</div>
+										<div class="mb-6 col-md-6">
+											<label for="addAccreditationId" class="form-label">Accreditation ID</label>
+											<input type="text" class="form-control" id="addAccreditationId" required>
+										</div>
+								</div>
+                <div class="mb-3">
+                <label for="addAccreditationDescription" class="form-label">Description</label>
+                <textarea class="form-control" id="addAccreditationDescription" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                <label for="addAccreditationDateAcquired" class="form-label">Accreditation Year</label>
+                <input type="date" class="form-control" id="addAccreditationDateAcquired" required>
+                </div>
+                <div class="mb-3">
+                <label for="addAccreditationImage" class="form-label">Accreditation Image</label>
+                <input type="file" class="form-control" id="addAccreditationImage" accept="image/*">
+                </div>
+                <div class="mb-3">
+                <div class="form-check">
+									<input class="form-check-input" type="checkbox" id="addAccreditationStatus">
+									<label class="form-check-label" for="addAccreditationStatus">
+										Active Status
+									</label>
+								</div>
+                </div>
+                <div class="text-end">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-save"></i> Save Accreditation
+                </button>
+                </div>
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+		<div class="modal fade" id="updateAccreditationFormModal" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+					<div class="modal-header bg-primary text-white">
+					<h5 class="modal-title">Update Accreditation</h5>
+					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+					<form id="updateAccreditationForm">
+							<input type="hidden" id="updateAccreditationIndex">
+							<div class="row mb-3">
+								<div class="mb-6 col-md-6">
+									<label for="updateAccreditationName" class="form-label">Accreditation Name</label>
+									<input type="text" class="form-control" id="updateAccreditationName" required>
+									</div>
+									<div class="mb-6 col-md-6">
+										<label for="updateAccreditationId" class="form-label">Accreditation ID</label>
+										<input type="text" class="form-control" id="updateAccreditationId" required>
+									</div>
+							</div>
+							<div class="mb-3">
+							<label for="updateAccreditationDescription" class="form-label">Description</label>
+							<textarea class="form-control" id="updateAccreditationDescription" rows="3" required></textarea>
+							</div>
+							<div class="mb-3">
+							<label for="updateAccreditationDateAcquired" class="form-label">Accreditation Year</label>
+							<input type="date" class="form-control" id="updateAccreditationDateAcquired" required>
+							</div>
+							<div class="mb-3">
+							<label for="updateAccreditationImage" class="form-label">Accreditation Image</label>
+							<input type="file" class="form-control" id="updateAccreditationImage" accept="image/*">
+							</div>
+							<div class="mb-3">
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" id="updateAccreditationStatus">
+								<label class="form-check-label" for="updateAccreditationStatus">
+									Active Status
+								</label>
+							</div>
+							</div>
+							<div class="text-end">
+							<button type="submit" class="btn btn-primary">
+									<i class="bi bi-save"></i> Save Accreditation
+							</button>
+							</div>
+					</form>
+					</div>
+			</div>
+			</div>
+		</div>
+
+		<!-- Message Management Model -->
+		<div class="modal fade" id="messagesModal" tabindex="-1" aria-labelledby="messagesModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="messagesModalLabel"> Messages</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+					</div>
+					<div class="modal-body">
+
+							<label for="subjectFilter" class="form-label">Filter by Subject:</label>
+							<select class="form-select" id="subjectFilter" onchange="filterMessages()">
+								<option value="all">All</option>
+								<option value="general">General</option>
+								<option value="admissions">Admissions</option>
+								<option value="feedback">Feedback</option>
+
+							</select>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Phone </th>
+									<th> Email</th>
+									<th>Subject</th>
+									<th>mas</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+									<tr data-subject="general">
+											<td>John Doe</td>
+											<td>01012345678</td>
+											<td>mohamed@example.com</td>
+											<td>General</td>
+											<td><button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#messageViewModal" onclick="showMessage('message1')">View</button></td>
+											<td><button type="button" class="btn btn-danger btn-sm">Delete</button></td>
+										</tr>
+								<tr data-subject="admissions">
+									<td>Jane Smith</td>
+									<td>01123456789</td>
+									<td>jane@example.com</td>
+									<td>Admissions</td>
+									<td><button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#messageViewModal" onclick="showMessage('message2')">View</button></td>
+									<td><button type="button" class="btn btn-danger btn-sm">Delete</button></td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="messageViewModal" tabindex="-1" aria-labelledby="messageViewModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="messageViewModalLabel">Message </h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+				<div class="modal-body">
+					<p id="messageContent">loading...</p>
+				</div>
+			</div>
+		</div>
+		</div>
+
+		<!-- Team Member Management Modal -->
+		<div class="modal fade" id="TeamModal" tabindex="-1" aria-labelledby="TeamModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-xl">
+					<div class="modal-content">
+							<div class="modal-header">
+									<h5 class="modal-title" id="TeamModalLabel">Team Members</h5>
+									<button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#AddMemberModal">
+											+ Add Member
+									</button>
+									<button type="button" class="btn-close ms-2" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+									<table class="table table-bordered table-hover text-center align-middle" id="teamTable">
+											<thead class="table-light">
+													<tr>
+															<th>Image</th>
+															<th>Full Name</th>
+															<th>Position</th>
+															<th>Description</th>
+															<th>Actions</th>
+													</tr>
+											</thead>
+											<tbody id="teamTableBody">
+													
+											</tbody>
+									</table>
+							</div>
+					</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="AddMemberModal" tabindex="-1" aria-labelledby="AddMemberModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+						<form id="addMemberForm" enctype="multipart/form-data">
+								<div class="modal-content">
+										<div class="modal-header">
+												<h5 class="modal-title" id="AddMemberModalLabel">Add Team Member</h5>
+												<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+												<div class="row">
+														<div class="mb-3 col-md-6">
+																<label for="addMemberName" class="form-label">Full Name</label>	
+																<input type="text" class="form-control" id="addMemberName" required>
+														</div>
+														<div class="mb-3 col-md-6">
+																<label for="addMemberPosition" class="form-label">Position</label>
+																<input type="text" class="form-control" id="addMemberPosition" required>
+														</div>
+												</div>
+												<div class="mb-3">
+														<label for="addMemberDescription" class="form-label">Description</label>
+														<textarea class="form-control" id="addMemberDescription" rows="2" required></textarea>
+												</div>
+												<div class="mb-3">
+														<label for="addMemberImage" class="form-label">Image</label>
+														<input type="file" class="form-control" id="addMemberImage" accept="image/*" required>
+												</div>
+												<div class="mb-3">
+														<label for="addMemberSocialMedia" class="form-label">Html Code</label><label for="Html" class="form-label"></label>
+														<textarea class="form-control" id="addMemberSocialMedia" rows="2" required></textarea>
+												</div>
+										</div>
+										<div class="modal-footer">
+												<button type="submit" class="btn btn-success">Add</button>
+										</div>
+								</div>
+						</form>
+				</div>
+		</div>
+
+		<!-- About Page Edit Modal -->
+    <div class="modal fade" id="aboutEditModal" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+					<div class="modal-header bg-primary text-white">
+					<h5 class="modal-title">Edit About Page</h5>
+					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+					<form id="aboutEditForm">
+							<div class="mb-3">
+							<label for="aboutTitle" class="form-label">About Title</label>
+							<input type="text" class="form-control" id="aboutTitle">
+							</div>
+							<div class="mb-3">
+							<label for="aboutImage" class="form-label">About Image</label>
+							<input type="file" class="form-control" id="aboutImage" accept="image/*">
+							</div>
+							<div class="mb-3">
+							<label for="aboutDescription" class="form-label">About Description</label>
+							<textarea class="form-control" id="aboutDescription" rows="5"></textarea>
+							</div>
+							<div class="mb-3">
+							<label for="missionTitle" class="form-label">Mission Title</label>
+							<input type="text" class="form-control" id="missionTitle">
+							</div>
+							<div class="mb-3">
+							<label for="missionImage" class="form-label">Mission Image</label>
+							<input type="file" class="form-control" id="missionImage" accept="image/*">
+							</div>
+							<div class="mb-3">
+							<label for="missionDescription" class="form-label">Mission Description</label>
+							<textarea class="form-control" id="missionDescription" rows="5"></textarea>
+							</div>
+							<div class="text-end">
+							<button type="submit" class="btn btn-primary">
+									<i class="bi bi-save"></i> Save Changes
+							</button>
+							</div>
+					</form>
+					</div>
+			</div>
+			</div>
+		</div>
+
+
+		<!-- Footer Modal -->
+    <div class="modal fade" id="FooterEditModal" tabindex="-1" aria-labelledby="FooterEditModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					
+					<div class="modal-header bg-primary " >
+						<h5 class="modal-title" id="FooterEditModalLabel text-white">Edit Footer Info</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					
+					<div class="modal-body">
+						<form id="footerForm">
+							<div class="row">
+								<div class="col-md-6 mb-3">
+									<label for="logoUrl" class="form-label">Logo</label>
+									<input type="file" class="form-control" id="logoUrl" name="LogoUrl" accept="image/*">
+								</div>
+		
+								<div class="col-md-6 mb-3">
+									<label for="description" class="form-label">Description</label>
+									<textarea class="form-control" id="footerDescription" name="Description" rows="1"></textarea>
+								</div>
+		
+								<div class="col-md-6 mb-3">
+									<label for="copyright" class="form-label">Copyright</label>
+									<input type="text" class="form-control" id="footerCopyright" name="Copyright">
+								</div>
+		
+								<div class="col-md-6 mb-3">
+									<label for="address" class="form-label">Address</label>
+									<input type="text" class="form-control" id="footerAddress" name="Address">
+								</div>
+		
+								<div class="col-md-6 mb-3">
+									<label for="phone" class="form-label">Phone</label>
+									<input type="tel" class="form-control" id="footerPhone" name="Phone">
+								</div>
+		
+								<div class="col-md-6 mb-3">
+									<label for="email" class="form-label">Email</label>
+									<input type="email" class="form-control" id="footerEmail" name="Email">
+								</div>
+		
+								<div class="col-md-6 mb-3">
+									<label for="workingHours" class="form-label">Working Hours</label>
+									<input type="text" class="form-control" id="footerWorkingHours" name="WorkingHours">
+								</div>
+		
+								<div class="col-md-6 mb-3">
+									<label for="socialMediaHtml" class="form-label">Social Media (HTML Code)</label>
+									<textarea class="form-control" id="footerSocialMediaHtml" name="SocialMediaHtml" rows="2" placeholder="&lt;a href='#'&gt;&lt;i class='fab fa-facebook'&gt;&lt;/i&gt;&lt;/a&gt;"></textarea>
+								</div>
+							</div>
+						</form>
+					</div>
+		
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<button type="submit" form="footerForm" class="btn btn-primary">Save changes</button>
+					</div>
+		
+				</div>
+			</div>
+		</div>
+
+		<!--Csv Files Management  -->
+    <div class="Dw">
+			<div class="download-container">
+					<button id="DW" class="download-btn">
+							<i class="bi bi-download"></i>
+							<span class="tooltip">download</span>
+					</button>
+					
+					<div class="download-options">
+							<a href="#" class="option">
+							<i class="bi bi-people-fill"></i>
+							<span> trainees</span>
+							</a>
+							<a href="#" class="option">
+							<i class="bi bi-envelope-fill"></i>
+							<span>Emails</span>
+							</a>
+					</div>
+					</div>
+		</div>
+
+		<!--Toasts Management  -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+        <div id="saveToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+                <div class="toast-body" id="toastBody">Saved successfully!</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        </div>
+    </div>
+
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999 ">
+        <div id="saveToast2" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex" style="background-color: brown;">
+                <div class="toast-body" id="toastBody2">Error</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        </div>
+    </div>
+
+		
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="admin.js"></script>
+
+</body>
+</html>
